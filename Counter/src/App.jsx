@@ -5,6 +5,7 @@ import ToDo from './components/ToDo';
 import Main from './components/Main';
 import Calculator from './components/Calculator';
 import Toggle from './components/Toggle';
+import Search from './components/Search';
 
 function App() {
  
@@ -12,7 +13,8 @@ function App() {
   return (
     <div>
     
-      <Toggle />
+      
+      <Search />
 
     </div>
   )
