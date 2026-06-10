@@ -2,6 +2,7 @@ import React from 'react';
 import {useState} from 'react';
 import Counter from './components/Counter';
 import ToDo from './components/ToDo';
+import Main from './components/Main';
 
 function App() {
  
@@ -10,6 +11,7 @@ function App() {
     <div>
      <Counter />
      <ToDo />
+     <Main />
 
     </div>
   )
