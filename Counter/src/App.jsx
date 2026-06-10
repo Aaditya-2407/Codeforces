@@ -3,15 +3,15 @@ import {useState} from 'react';
 import Counter from './components/Counter';
 import ToDo from './components/ToDo';
 import Main from './components/Main';
+import Calculator from './components/Calculator';
 
 function App() {
  
 
   return (
     <div>
-     <Counter />
-     <ToDo />
-     <Main />
+     
+     <Calculator />
 
     </div>
   )
