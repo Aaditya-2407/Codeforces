@@ -6,6 +6,7 @@ import Main from './components/Main';
 import Calculator from './components/Calculator';
 import Toggle from './components/Toggle';
 import Search from './components/Search';
+import Testimonial from './components/testimonial';
 
 function App() {
  
@@ -14,7 +15,8 @@ function App() {
     <div>
     
       
-      <Search />
+      <Testimonial />
+      
 
     </div>
   )
