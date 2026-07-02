@@ -7,7 +7,8 @@ import Calculator from './components/Calculator';
 import Toggle from './components/Toggle';
 import Search from './components/Search';
 import Testimonial from './components/testimonial';
-
+import Accordion from "./Accordion";
+import form from './components/form';
 function App() {
  
 
@@ -16,6 +17,8 @@ function App() {
     
       
       <Testimonial />
+      <Accordion/>
+      <form/>
       
 
     </div>
