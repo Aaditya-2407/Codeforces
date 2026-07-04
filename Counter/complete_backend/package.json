@@ -1,0 +1,29 @@
+{
+  "name": "complete_backend",
+  "version": "1.0.0",
+  "description": "a basecamp clone for project managment application ",
+  "keywords": [
+    "backend",
+    "API",
+    "clone",
+    "API",
+    "creation"
+  ],
+  "license": "ISC",
+  "author": "Aaditya Kharat",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.7.3",
+    "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "prettier": "3.9.4"
+  }
+}
