@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 
 const sendEmail = async (options) => {
-    new Mailgen({
+    const mailGenerator = new Mailgen({
         theme: "default",
         product: {
             name: "Task Manager",
@@ -11,7 +11,7 @@ const sendEmail = async (options) => {
         }
     })
 
-    const emailTextual = mailGenerator.generatePlainText(options.mailgenContent)
+    const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent)
     const emailHtml = mailGenerator.generate(options.mailgenContent)
 
 
@@ -33,10 +33,10 @@ const sendEmail = async (options) => {
     }
 
     try {
-        await transporter.methodsenMail(mail)
+        await transporter.sendMail(mail)
         
     } catch (error) {
-
+        throw new Error(`Failed to send email: ${error.message}`)
         
     }
 }

@@ -5,7 +5,7 @@ const userRegistrationValidator = () =>
     return [
         body("email")
         .trim()
-        .isEmail
+        .isEmail()
         .withMessage("not a valid email")
         .notEmpty()
         .withMessage("email field cant be empty"),
@@ -33,4 +33,17 @@ const userRegistrationValidator = () =>
 
     ]
 }
-export {userRegistrationValidator}
+const loginValidator = () => {
+    return [
+        body("email")
+        .optional()
+        .isEmail()
+        .withMessage("Email invalid"),
+        body("password")
+        .notEmpty()
+        .withMessage("Password is required")
+
+
+    ]
+}
+export {userRegistrationValidator , loginValidator}

@@ -16,7 +16,8 @@ const generateAccessAndRefreshTokens = async (userId) => {
     }
     catch (error) {
         throw new ApiError(
-            500, "Something went wrong while generating accessToken"
+            500,
+            `Something went wrong while generating accessToken: ${error.message}`
         )
     }
 }
@@ -78,9 +79,10 @@ const registerUser = asyncHandler(async (req, res) => {
 });
 
 const login = asyncHandler(async (req,res,next) => {
-    const {email,password} = req.body
-    if(!email || !username){
-        throw new ApiError(400, "username or email required")
+    const { email, password } = req.body
+
+    if (!email || !password) {
+        throw new ApiError(400, "email and password are required")
 
     }
 
@@ -90,13 +92,12 @@ const login = asyncHandler(async (req,res,next) => {
         throw new ApiError(400, "User does not exists");
 
     }
-    const isPasswordValid =  user.isPasswordCorrect(password);
-    if(!isPasswordValid)
-    {
-        throw new ApiError(402, "incorrect password ");
+    const isPasswordValid = await user.isPasswordCorrect(password);
+    if (!isPasswordValid) {
+        throw new ApiError(401, "incorrect password");
 
     }
-    const  {accessToken , efreshToken} = await generateAccessAndRefreshTokens(user._id)
+    const { accessToken, refreshToken } = await generateAccessAndRefreshTokens(user._id)
 
     const loggedInUser = await User.findById(user._id).select(
         "-password -refreshToken -emailTokens -emailVerificationToken -emailVerificationExpiry",
