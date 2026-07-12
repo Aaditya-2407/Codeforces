@@ -66,7 +66,6 @@ const userSchema = new Schema(
 {timestamps:true}
 );
 
-// FIX 1: Removed 'next' completely. Modern Mongoose async hooks don't need it!
 userSchema.pre("save", async function(){
     if(!this.isModified("password")) return;
     this.password = await bcrypt.hash(this.password, 10);
@@ -89,7 +88,6 @@ userSchema.methods.generateAccessToken = function() {
 }
 
 userSchema.methods.generateRefreshToken = function() {
-    // FIX 3: Added 'return' keyword
     return jwt.sign(
         {
             _id: this._id,

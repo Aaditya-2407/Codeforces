@@ -46,4 +46,29 @@ const loginValidator = () => {
 
     ]
 }
+import { body } from "express-validator";
+
+// 1. Validator for Changing Current Password
+export const userChangeCurrentPasswordValidator = () => {
+    return [
+        body("oldPassword").notEmpty().withMessage("Old password is required"),
+        body("newPassword").notEmpty().withMessage("New password is required")
+    ];
+};
+
+// 2. Validator for Forgot Password Request
+export const userForgotPasswordValidator = () => {
+    return [
+        body("email")
+            .notEmpty().withMessage("Email is required")
+            .isEmail().withMessage("Email is invalid")
+    ];
+};
+
+// 3. Validator for Reset Password
+export const userResetPasswordValidator = () => {
+    return [
+        body("newPassword").notEmpty().withMessage("Password is required")
+    ];
+};
 export {userRegistrationValidator , loginValidator}
