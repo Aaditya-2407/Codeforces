@@ -72,10 +72,14 @@ const deleteProject = asyncHandler(async (req, res) => {
     const project = await Project.findByIdAndDelete(
         projectId
     );
-
     if (!project) {
         throw new ApiError(404, "Project not found");
     }
+    await ProjectMember.deleteMany({ project: projectId });
+await Task.deleteMany({ project: projectId });
+await Note.deleteMany({ project: projectId });
+
+    
 
     // Optional: You could also delete all ProjectMembers associated with this project here!
 
