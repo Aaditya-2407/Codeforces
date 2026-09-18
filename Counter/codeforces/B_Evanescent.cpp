@@ -25,43 +25,32 @@ using namespace std;
 
 void solve()
 {
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
     
-   
-   int n;
-   cin>>n;
-   vi a(n);
-   f(i,n)
-   {
-    cin>>a[i];
-
-   }
-   int ans=n;
-   if(n==0)
-   {
-    cout<<n<<endl;
+    
+    int start = 1;
+    for (int i = 1; i < n; i++) {
+        if (s[i] != s[i-1]) {
+            start++;
+        }
+    }
+    
+    int mini = start;
+    
+    for (int i = 1; i < n - 1; i++) {
+        int before = (s[i-1] != s[i]) + (s[i] != s[i+1]);
+        int after= (s[i-1] != s[i+1]);
+        
+        int change = after - before;
+        mini = min(mini, start + change);
+    }
+    
+    cout << mini << "\n";
     return;
-   }
-int right =1;
-int left =0;
-
-   while(right<=n-1)
-   {
-    if(a[left] == a[right])
-    {
-        right++;
-        ans-1;
-    }
-    else{
-        left= right;
-        right++;
-    }
-   }
-   cout<<ans<<endl;
-   return;
-   
     
-    
-
 }
 
 int32_t main() {
